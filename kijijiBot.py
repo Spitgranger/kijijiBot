@@ -50,7 +50,7 @@ title.send_keys(Keys.RETURN)
 time.sleep(2)
 try:
     element = WebDriverWait(driver, 10).until(
-        EC.presence_of_element_located((By.CLASS_NAME, "suggestedListItem-2860252116"))
+        EC.presence_of_element_located((By.XPATH, '/html/body/div[3]/div[2]/div/div/div/div[2]/div/div/div[2]/div[2]/div[1]/ul/li[3]/button'))
         
     )
     element.click()
@@ -93,8 +93,15 @@ amount = driver.find_element_by_id("PriceAmount")
 amount.send_keys(price)
 phone = driver.find_element_by_id("PhoneNumber")
 phone.send_keys(phoneNumber)
-#submit = driver.find_element_by_link_text("Post Your Ad")
-#submit.click()
+try:
+    images = WebDriverWait(driver, 15).until(
+        EC.presence_of_element_located((By.CLASS_NAME, "container-393064055"))
+    )
+    images.click()
+except:
+    print("goug")
+submit = driver.find_element_by_css_selector('[class = "button-2083332871 button-1997310527 button__primary-1681489609 button__medium-1066667140"]')
+submit.click()
 #username = driver.find_element_by_class_name("container-227378722 inputBox-3265251147")
 #password = driver.find_element_by_id("password")
 #username.send_keys("thinkpad220@hotmail.com")
